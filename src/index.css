@@ -1,0 +1,8 @@
+html,
+body {
+  background-color: rgb(29, 29, 29);
+  color: rgb(184, 184, 184);
+  font-family: "Consolas";
+  font-size: 14px;
+  box-sizing: border-box;
+}
