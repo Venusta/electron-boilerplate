@@ -1,8 +1,10 @@
-const webpack = require("webpack")
-const path = require("path")
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+const webpack = require("webpack");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { spawn } = require('child_process')
+const { spawn } = require("child_process");
 
 const PATH_SOURCE = path.join(__dirname, "./src");
 const PATH_DIST = path.join(__dirname, "./dist");
@@ -30,10 +32,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader',],
-        include: PATH_SOURCE
+        use: ["style-loader", "css-loader"],
+        include: PATH_SOURCE,
       },
-    ]
+    ],
   },
   entry: [
     path.join(PATH_SOURCE, "./index.jsx"),
@@ -41,7 +43,7 @@ module.exports = {
   target: "electron-renderer",
   plugins: [
     new webpack.EnvironmentPlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      "process.env.NODE_ENV": JSON.stringify("development"),
       DEBUG: false,
     }),
     new CleanWebpackPlugin(),
@@ -55,18 +57,18 @@ module.exports = {
     stats: {
       colors: true,
       chunks: false,
-      children: false
+      children: false,
     },
     before() {
       spawn(
-        'electron',
-        ['.'],
+        "electron",
+        ["."],
         {
-          shell: true, env: process.env, stdio: 'inherit'
-        }
+          shell: true, env: process.env, stdio: "inherit",
+        },
       )
-        .on('close', code => process.exit(0))
-        .on('error', spawnError => console.error(spawnError))
-    }
-  }
-}
+        .on("close", (code) => process.exit(0))
+        .on("error", (spawnError) => console.error(spawnError));
+    },
+  },
+};
