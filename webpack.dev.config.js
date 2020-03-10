@@ -40,6 +40,10 @@ module.exports = {
   entry: [
     path.join(PATH_SOURCE, "./index.jsx"),
   ],
+  resolve: {
+    extensions: [".js", ".jsx"],
+    mainFields: ["module", "main"],
+  },
   target: "electron-renderer",
   plugins: [
     new webpack.EnvironmentPlugin({
