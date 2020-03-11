@@ -4,7 +4,7 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
-const { default: installExtension, REACT_DEVELOPER_TOOLS } = require("electron-devtools-installer");
+const { default: installExtension, REACT_DEVELOPER_TOOLS } = require("electron-devtools-installer"); // TODO this line breaks prod
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -32,6 +32,7 @@ function createWindow() {
     show: false,
     webPreferences: {
       nodeIntegration: true,
+      webSecurity: dev !== true,
     },
   });
 
